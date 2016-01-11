@@ -1,2 +1,1 @@
-# koa-rest-new-project
-generator koa rest test project
+https://github.com/PatrickWolleb/generator-koa-rest
