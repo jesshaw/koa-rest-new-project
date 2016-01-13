@@ -4,6 +4,7 @@
   "main": "src/server.js",
   "dependencies": {
     "jsonwebtoken": "^5.4.1",
+    "kcors": "^1.0.1",
     "koa": "^0.18.1",
     "koa-bodyparser": "^2.0.1",
     "koa-jwt": "^1.1.1",

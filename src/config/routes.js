@@ -8,6 +8,7 @@ var mount = require('koa-mount');
 var koajwt = require('koa-jwt');
 var bodyParser = require('koa-bodyparser');
 var jsonp = require('koa-safe-jsonp');
+var cors = require('kcors')
 
 // var profile = {
 //     id: 123
@@ -17,12 +18,6 @@ var jsonp = require('koa-safe-jsonp');
 //     expiresInMinutes: 60 * 5 //设置超时时间为5小时
 // });
 
-// var generatorToken = function(profile) {
-//     koajwt.sign(profile, 'secret', {
-//         expiresInMinutes: 60 * 5 //设置超时时间为5小时
-//     });
-// }
-
 
 
 // console.log('  curl http://localhost:3000/            # should succeed (return "unprotected")');
@@ -30,10 +25,14 @@ var jsonp = require('koa-safe-jsonp');
 // console.log('  curl -H "Authorization: Bearer ' + token + '" http://localhost:3000/cars   # should succeed (return " 200 protected")'); //
 
 module.exports = function(app) {
-    jsonp(app, {
-        callback: 'callback', // default is 'callback'
-        limit: 50, // max callback name string length, default is 512
-    });
+
+    app.use(cors());
+
+    // jsonp(app, {
+    //     callback: 'callback', // default is 'callback'
+    //     limit: 50, // max callback name string length, default is 512
+    // });
+
 
     app.use(bodyParser());
 
