@@ -39,7 +39,7 @@ module.exports = function(app) {
     // Custom 401 handling
     app.use(function*(next) {
         try {
-            console.log(this.request.body);
+            //console.log(this.request.body);
             yield next;
         } catch (err) {
             console.log(err);
@@ -65,12 +65,20 @@ module.exports = function(app) {
 
     // Unprotected middleware
 
-    app.use(mount('/account', require('../resources/account')));
     app.use(mount('/', require('../resources/root')));
 
     app.use(koajwt({
-        secret: 'secret'
-    }));
+            secret: 'secret'
+        })
+        .unless({
+            path: [/^\/account\/login/]
+        })
+
+
+    );
+
+
+    app.use(mount('/account', require('../resources/account')));
 
     // YEOMAN INJECT ROUTES BELOW
     app.use(mount('/cars', require('../resources/cars')));
