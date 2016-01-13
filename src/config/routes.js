@@ -7,6 +7,7 @@
 var mount = require('koa-mount');
 var koajwt = require('koa-jwt');
 var bodyParser = require('koa-bodyparser');
+var jsonp = require('koa-safe-jsonp');
 
 // var profile = {
 //     id: 123
@@ -16,6 +17,12 @@ var bodyParser = require('koa-bodyparser');
 //     expiresInMinutes: 60 * 5 //设置超时时间为5小时
 // });
 
+// var generatorToken = function(profile) {
+//     koajwt.sign(profile, 'secret', {
+//         expiresInMinutes: 60 * 5 //设置超时时间为5小时
+//     });
+// }
+
 
 
 // console.log('  curl http://localhost:3000/            # should succeed (return "unprotected")');
@@ -23,13 +30,20 @@ var bodyParser = require('koa-bodyparser');
 // console.log('  curl -H "Authorization: Bearer ' + token + '" http://localhost:3000/cars   # should succeed (return " 200 protected")'); //
 
 module.exports = function(app) {
+    jsonp(app, {
+        callback: 'callback', // default is 'callback'
+        limit: 50, // max callback name string length, default is 512
+    });
 
     app.use(bodyParser());
+
     // Custom 401 handling
     app.use(function*(next) {
         try {
+            console.log(this.request.body);
             yield next;
         } catch (err) {
+            console.log(err);
             if (401 === err.status) {
                 this.status = 401;
                 this.body = '401 Unauthorized - Protected resource, use Authorization header to get access\n';
