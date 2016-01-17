@@ -7,8 +7,8 @@
 var mount = require('koa-mount');
 var koajwt = require('koa-jwt');
 var bodyParser = require('koa-bodyparser');
-var jsonp = require('koa-safe-jsonp');
 var cors = require('kcors')
+var serve = require('koa-static');
 
 // var profile = {
 //     id: 123
@@ -26,13 +26,7 @@ var cors = require('kcors')
 
 module.exports = function(app) {
 
-    app.use(cors());
-
-    // jsonp(app, {
-    //     callback: 'callback', // default is 'callback'
-    //     limit: 50, // max callback name string length, default is 512
-    // });
-
+    app.use(cors()); //cross origin resource sharing
 
     app.use(bodyParser());
 
@@ -52,17 +46,6 @@ module.exports = function(app) {
         }
     });
 
-
-    // // sign
-    // app.use(function*(next) {
-    //     if (this.url.match(/^\/api\/sign/)) {
-    //         console.log(this.request);
-    //         this.body = token;
-    //     } else {
-    //         yield next;
-    //     }
-    // });
-
     // Unprotected middleware
 
     app.use(mount('/', require('../resources/root')));
@@ -73,13 +56,12 @@ module.exports = function(app) {
         .unless({
             path: [/^\/account\/login/]
         })
-
-
     );
-
 
     app.use(mount('/account', require('../resources/account')));
 
     // YEOMAN INJECT ROUTES BELOW
+    app.use(serve(__dirname + '/public'));
+    app.use(mount('/files', require('../resources/files')));
     app.use(mount('/cars', require('../resources/cars')));
 };

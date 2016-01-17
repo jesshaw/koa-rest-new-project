@@ -7,7 +7,6 @@ exports.index = function*(next) {
     console.log(this.method);
     this.status = 200;
     this.body = [];
-    // return yield next;
 };
 
 
