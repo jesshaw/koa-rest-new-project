@@ -58,10 +58,11 @@ module.exports = function(app) {
         })
     );
 
-    app.use(mount('/account', require('../resources/account')));
+    // Protected middleware
 
+    // app.use(serve(__dirname + '/public')); //意为可以访问静态页面
     // YEOMAN INJECT ROUTES BELOW
-    app.use(serve(__dirname + '/public'));
     app.use(mount('/files', require('../resources/files')));
+    app.use(mount('/account', require('../resources/account')));
     app.use(mount('/cars', require('../resources/cars')));
 };

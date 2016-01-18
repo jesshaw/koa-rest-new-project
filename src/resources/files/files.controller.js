@@ -14,7 +14,7 @@ exports.index = function*(next) {
 
 // handle uploads
 exports.upload = function*(next) {
-    console.log('upload....');
+    console.log(this);
     // ignore non-POSTs
     if ('POST' != this.method) return yield next;
 
