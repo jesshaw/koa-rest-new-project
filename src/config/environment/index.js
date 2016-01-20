@@ -5,10 +5,10 @@ var _ = require('lodash');
 
 // Base config
 var base = {
-  env: process.env.NODE_ENV,
-  root: path.normalize(__dirname + '/../../..'),
-  port: process.env.PORT || 9000,
-  logType : 'dev'
+    env: process.env.NODE_ENV,
+    root: path.normalize(__dirname + '/../../..'),
+    port: process.env.PORT || 9001,
+    logType: 'dev'
 };
 
 
