@@ -17,11 +17,11 @@
 
 ### run production environment in the background
 ``` bash
-  $ NODE_ENV=production forever start ./ -o output.log 
+  $ NODE_ENV=production forever start -o output.log ./
 ```
 ### run devlopment environment in the background
 ``` bash
-  $ NODE_ENV=development forever start ./ -o output.log 
+  $ NODE_ENV=development forever start -o output.log ./
 ```
 ### orther forever operation
 ``` bash
@@ -42,7 +42,7 @@ touch ~/.ssh/config
 Host mygithub github.com
 	Hostname github.com
 	IdentityFile ~/.ssh/id_rsa.github
-	User jes1@sohu.com
+	User test@github.com
 
 ## upload pub key
 clip < ~/.ssh/id_rsa.pub    
