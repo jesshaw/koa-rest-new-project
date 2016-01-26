@@ -7,7 +7,7 @@ var _ = require('lodash');
 var base = {
     env: process.env.NODE_ENV,
     root: path.normalize(__dirname + '/../../..'),
-    port: process.env.PORT || 9001,
+    port: process.env.PORT || 8081,
     logType: 'dev'
 };
 
