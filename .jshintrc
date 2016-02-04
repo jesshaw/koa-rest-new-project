@@ -12,5 +12,14 @@
     "smarttabs": true,
     "asi": true,
     "noyield": true,
-    "debug": true
+    "debug": true,
+    "globals": {
+        /* MOCHA */
+        "describe": false,
+        "it": false,
+        "before": false,
+        "beforeEach": false,
+        "after": false,
+        "afterEach": false
+    }
 }
