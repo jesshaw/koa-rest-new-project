@@ -4,7 +4,6 @@ var koajwt = require('koa-jwt');
 
 // curl http://localhost:8080/account
 exports.index = function*(next) {
-    console.log(this.method);
     this.status = 200;
     this.body = [];
 };
