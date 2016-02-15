@@ -4,15 +4,15 @@
     "bitwise": true,
     "eqeqeq": true,
     "immed": true,
-    "latedef": "nofunc",
-    "newcap": true,
-    "noarg": true,
-    "regexp": true,
-    "undef": true,
-    "smarttabs": true,
-    "asi": true,
-    "noyield": true,
-    "debug": true,
+    "latedef": true, //值为true时，禁止在变量定义之前使用它
+    "newcap": true, //构造函数名需要大写
+    "noarg": true, //值为true时，禁止使用arguments.caller与arguments.callee.    
+    "undef": true, //值为true时，禁止使用未定义的变量.
+    //"smarttabs": true,
+    "asi": false, //值为false时，如果代码末尾省略了分号，则JSHint会给出警告；值为true时，则不会.
+    "noyield": true, //为false时，如果代码省略 yield关键字，则JSHint会给出警告
+    "debug": false, //值为false时，如果代码中有debugger语句，则JSHint会给出警告；值为true时，则不会.
+    "expr": true, //值为false时，只允许在函数调用或赋值时使用表达式.
     "globals": {
         /* MOCHA */
         "describe": false,

@@ -8,13 +8,11 @@ var expect = require('chai').expect;
 var should = require('should');
 
 
-describe('GET /account', function(){
-  it('should respond with 200 type Array', function(done){
-    request
-    .get('/account')
-    .expect(200, function(err, res) {
-    	expect(Array.isArray(res.body)).to.be.true;
-    	done();
+describe('GET /account', function() {
+    it('should respond with 200 type Array', function(done) {
+        request.get('/account').expect(200, function(err, res) {
+            expect(Array.isArray(res.body)).to.be.true;
+            done();
+        });
     });
-  });
 });

@@ -33,4 +33,4 @@ exports.upload = function*(next) {
         status: true,
         message: "upload success!"
     };
-}
+};

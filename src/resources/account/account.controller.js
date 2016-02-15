@@ -38,7 +38,7 @@ exports.checkAuth = function*(next) {
     this.body = {
         status: true
     };
-}
+};
 
 // curl -H "Content-Type: application/json" -X POST -d '{"userLogin":{"userName":"a@a.com","password":"111111"}}' http://localhost:8080/account/checkAuth
 exports.logout = function*(next) {
@@ -47,4 +47,4 @@ exports.logout = function*(next) {
     this.body = {
         status: true
     };
-}
+};
