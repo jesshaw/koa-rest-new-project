@@ -1,6 +1,7 @@
 'use strict';
 
 var koajwt = require('koa-jwt');
+var config = require('../../config/environment');
 
 // curl http://localhost:8080/account
 exports.index = function*(next) {
@@ -9,16 +10,17 @@ exports.index = function*(next) {
 };
 
 
-// curl -H "Content-Type: application/json" -X POST -d '{"userLogin":{"userName":"a@a.com","password":"111111"}}' http://localhost:8080/account/login
+// curl -H "Content-Type: application/json" -X POST -d '{"userLogin":{"userName":"a@a.com","password":"111111"}}' http://localhost:9090/account/login
 exports.login = function*(next) {
     if ('POST' !== this.method) return yield next;
-    console.log(this.request.body);
+    // console.log(this.request.body);
+    // console.log(config.port);
     this.status = 200;
     var res = {};
     if (this.request.body && this.request.body.userLogin && this.request.body.userLogin.userName === 'a@a.com' && this.request.body.userLogin.password === '111111') {
         res = {
             status: true,
-            token: koajwt.sign(this.request.body, 'secret', {
+            token: koajwt.sign(this.request.body, config.secret, {
                 expiresInMinutes: 60 * 5 //设置超时时间为5小时
             })
         };

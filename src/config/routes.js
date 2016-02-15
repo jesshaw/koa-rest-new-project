@@ -7,7 +7,7 @@
 var mount = require('koa-mount');
 var koajwt = require('koa-jwt');
 var bodyParser = require('koa-bodyparser');
-var cors = require('kcors')
+var cors = require('kcors');
 var serve = require('koa-static');
 
 // var profile = {
